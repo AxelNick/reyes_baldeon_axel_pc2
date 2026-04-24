@@ -3,8 +3,8 @@ project(PC2_CC232_Reyes_Axel)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Obligatorio: Solo archivos .h
+# Obligatorio: Directorio de cabeceras .h
 include_directories(include)
 
-# Ejemplo de ejecutable para el demo
-# add_executable(main_demo demos/main.cpp)
+# Le decimos que compile src/main.cpp y genere 'pc2_ejecutable'
+add_executable(pc2_ejecutable src/main.cpp)
