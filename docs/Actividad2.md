@@ -153,7 +153,7 @@ La relación entre estos tres factores se define por un compromiso estructural (
 
 ### Evidencias de Compilación y Ejecución
 
-### 1. Evidencia: demo_array_basico.cpp
+### Evidencia: demo_array_basico.cpp
 
 ```
 $ ./sem2_demo_array_basico
@@ -165,7 +165,7 @@ b: 10 20 30 40 50
 nota: esta version de array usa una asignacion por transferencia de ownership.
 ```
 
-### 2. Evidencia: demo_arraystack.cpp
+### Evidencia: demo_arraystack.cpp
 
 ```
 $ ./sem2_demo_arraystack
@@ -174,7 +174,7 @@ size = 3
 remove(1) = 15
 ```
 
-### 3. Evidencia: demo_arraystack_explicado.cpp
+### Evidencia: demo_arraystack_explicado.cpp
 
 ```
 $ ./sem2_demo_arraystack_explicado
@@ -205,7 +205,7 @@ invariante: 0 <= n <= capacity y los elementos validos viven en [0, n)
 Idea central: add(i,x) y remove(i) cuestan O(n-i) por los desplazamientos.
 ```
 
-### 4. Evidencia: demo_fastarraystack.cpp
+### Evidencia: demo_fastarraystack.cpp
 
 ```
 $ ./sem2_demo_fastarraystack
@@ -213,7 +213,7 @@ size = 7
 0 1 2 99 3 4 5
 ```
 
-### 5. Evidencia: demo_rootisharraystack.cpp
+### Evidencia: demo_rootisharraystack.cpp
 
 ```
 $ ./sem2_demo_rootisharraystack
@@ -221,7 +221,7 @@ size = 8
 0 10 20 30 40 50 60 70
 remove(3) = 30
 ```
-### 6. Evidencia: demo_rootisharraystack_explicado.cpp
+### Evidencia: demo_rootisharraystack_explicado.cpp
 
 ```
 $ ./sem2_demo_rootisharraystack_explicado
@@ -261,7 +261,7 @@ Idea central: se usan bloques de tamano 1, 2, 3, ...
 Esto reduce espacio desperdiciado frente a duplicar un arreglo grande.
 ```
 
-### 7. Evidencia: demo_deng_vector.cpp
+### Evidencia: demo_deng_vector.cpp
 
 ```
 $ ./sem2_demo_deng_vector
@@ -282,7 +282,7 @@ find(50) = -1
 Estado final -> size=6, capacity=12
 ```
 
-### 8. Evidencia: demo_stl_vector_contraste.cpp
+### Evidencia: demo_stl_vector_contraste.cpp
 
 ```
 $ ./sem2_demo_stl_vector_contraste 
@@ -491,10 +491,15 @@ Porque proporciona el sustento teórico de sus decisiones de diseño. La lectura
 Pasar de un arreglo primitivo a una estructura dinámica implica crear un **Tipo de Dato Abstracto (ADT)** autónomo. Este cambio se define por cinco puntos clave:
 
 1.  **Representación:** Se independiza la gestión de memoria, separando estrictamente el **tamaño lógico** (elementos válidos para el usuario) de la **capacidad física** (espacio total reservado).
+
 2.  **Correctitud:** La estructura asume la responsabilidad de mantener sus invariantes internamente (desplazar elementos, hacer copias profundas), asegurando el orden y previniendo errores de memoria sin intervención del usuario.
+
 3.  **Costo amortizado:** Al utilizar un crecimiento geométrico (ej. duplicar la capacidad), el alto costo temporal de reasignar memoria se diluye, garantizando matemáticamente un costo amortizado de **$O(1)$** por inserción.
+
 4.  **Uso de espacio:** Se acepta un desperdicio estratégico de memoria (sobreaprovisionamiento temporal). Esta memoria inactiva es el precio que se paga para ganar velocidad y evitar reubicaciones constantes.
+
 5.  **Comparación de variantes:**
+
     *   **ArrayStack:** Es la implementación base. Mantiene memoria estrictamente contigua, desperdiciando espacio en $O(n)$ y usando bucles iterativos lentos para desplazar datos.
     *   **FastArrayStack:** Conserva el mismo diseño teórico y espacial ($O(n)$), pero acelera la ejecución delegando los desplazamientos a funciones nativas de bajo nivel (optimizaciones de hardware).
     *   **RootishArrayStack:** Rompe la contigüidad absoluta usando bloques de tamaño incremental. Mantiene el acceso rápido en $O(1)$ mediante ecuaciones matemáticas y logra reducir drásticamente el desperdicio de espacio de $O(n)$ a **$O(\sqrt{n})$**.
