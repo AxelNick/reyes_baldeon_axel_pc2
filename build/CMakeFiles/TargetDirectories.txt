@@ -1,0 +1,3 @@
+C:/Users/AXEL/OneDrive/Escritorio/uni/2026-1/AED/PC2/reyes_baldeon_axel_pc2/build/CMakeFiles/pc2_ejecutable.dir
+C:/Users/AXEL/OneDrive/Escritorio/uni/2026-1/AED/PC2/reyes_baldeon_axel_pc2/build/CMakeFiles/edit_cache.dir
+C:/Users/AXEL/OneDrive/Escritorio/uni/2026-1/AED/PC2/reyes_baldeon_axel_pc2/build/CMakeFiles/rebuild_cache.dir
