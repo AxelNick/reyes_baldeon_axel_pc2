@@ -2,13 +2,12 @@
 
 ### Estudiante
 - **Nombre:** Axel Alberto Reyes Baldeón
-- **Código:** (Ingresa aquí tu código de alumno)
+- **Código:** 20200485B
 - **Problema asignado:** 25. LeetCode 301 - Remove Invalid Parentheses
 - **Enlace:** [LeetCode 301](https://leetcode.com/problems/remove-invalid-parentheses/)
 
 ### Referencia oficial
-- **Archivo de asignación:** 
-  [Problemas-Evaluacion2.csv](https://github.com/kapumota/CC-232/blob/main/Practicas/Practica2_CC232/Problemas-Evaluacion2.csv)
+- **Archivo de asignación:** [Problemas-Evaluacion2.csv](https://github.com/kapumota/CC-232/blob/main/Practicas/Practica2_CC232/Problemas-Evaluacion2.csv)
 
 ### Tema principal
 - **Semana:** Semana 4
@@ -21,38 +20,43 @@ La solución implementa un algoritmo de búsqueda exhaustiva optimizada. Primero
 - **Tiempo:** $O(2^n)$ en el peor caso teórico, aunque la poda por remoción mínima y la omisión de duplicados reduce drásticamente el espacio de búsqueda efectivo.
 - **Espacio:** $O(n)$ debido a la profundidad de la pila de llamadas (*call stack*) de la recursión y el almacenamiento de la cadena temporal.
 
-## Casos de Prueba Clave
-El proyecto incluye un entorno de pruebas (`tests/test_solution.cpp`) que valida los siguientes escenarios:
-1. **Caso Estándar Mixto `()())()`:** Verifica la eliminación del paréntesis excedente generando múltiples respuestas válidas.
-2. **Caso con Texto Puro `abc`:** Demuestra que el algoritmo ignora caracteres alfanuméricos sin alterar la cadena.
-3. **Caso Extremo (Inversión) `)(`:** Confirma que el programa detecta el invariante roto inmediatamente y devuelve una cadena vacía `[""]`.
-
-
 ### Invariante o idea clave
 El invariante de validación establece que en cualquier prefijo de la cadena, el número de paréntesis de cierre nunca debe exceder al de apertura, y la cadena final resultante debe tener un balance neto de cero. La búsqueda está acotada por el cálculo previo de remociones mínimas, lo que garantiza que solo se exploren soluciones con el menor número de cambios posibles.
 
 ### Archivos relevantes
 - `include/Solution301.h`: Contiene la definición de la clase y la lógica algorítmica.
-- `src/main.cpp`: Implementación del punto de entrada y casos de prueba.
+- `src/main.cpp`: Implementación del punto de entrada y modo interactivo.
+- `tests/test_solution.cpp`: Batería de pruebas automatizadas con 7 escenarios validados.
 - `docs/Actividad1.md`: Análisis conceptual de la Semana 1.
 - `docs/Actividad2.md`: Análisis de estructuras contiguas de la Semana 2.
 - `docs/Actividad3.md`: Análisis de estructuras enlazadas de la Semana 3.
 
-### Compilación
+### Compilación y Ejecución
+Para compilar el proyecto usando CMake:
 ```bash
 cmake -S . -B build
 cmake --build build
 ```
 
-### Ejecución
+Para ejecutar la batería de pruebas:
+```bash
+./build/run_tests.exe
+```
+
+Para iniciar el modo interactivo:
 ```bash
 ./build/pc2_ejecutable.exe
 ```
 
-### Casos de prueba
-- **Entrada estándar:** `"()())()"` -> Retorna las combinaciones válidas con remoción mínima: `("(())()", "()()()")`.
-- **Entrada con texto:** `"(a)())()"` -> Valida que los caracteres alfanuméricos se preserven correctamente.
-- **Caso de inversión:** `")("` -> El algoritmo detecta la inviabilidad y retorna una cadena vacía `[""]`.
+### Casos de Prueba y Validación
+El proyecto incluye un entorno de pruebas automatizadas que valida 7 escenarios estructurados:
+- **Caso estándar mixto ("()())()"):** Verifica la eliminación del paréntesis excedente generando múltiples respuestas válidas.
+- **Caso con caracteres de texto ("(a)())()"):** Demuestra que el algoritmo ignora caracteres alfanuméricos según la regla oficial de LeetCode.
+- **Caso Borde - Ya es válida ("()()"):** Confirma que el algoritmo no altera cadenas que ya cumplen el invariante.
+- **Caso Borde - Inversión total (")("):** Evita la exploración de ramas imposibles, retornando una cadena vacía.
+- **Caso Borde - Solo texto puro ("abc"):** Demuestra que no se altera el texto base si no hay paréntesis.
+- **Caso Extremo - Cadena vacía (""):** Manejo seguro de entradas sin longitud.
+- **Caso Extremo - Un solo carácter inválido (")"):** Detecta inmediatamente la ruptura del invariante y limpia la salida.
 
 ### Historial de commits
 El historial de commits refleja un proceso de desarrollo progresivo realizado en días distintos, el cual será demostrado detalladamente durante la sustentación en video.
