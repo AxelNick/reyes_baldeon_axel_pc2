@@ -15,14 +15,9 @@ private:
     // Verifica el invariante LIFO sin gastar memoria instanciando un ADT Stack real.
     // Invariante: balance >= 0 en todo momento, y balance == 0 al final.
     bool isValid(const string& s) {
-        int balance = 0;
-        for (char c : s) {
-            if (c == '(') balance++;
-            else if (c == ')') balance--;
-            
-            if (balance < 0) return false; // Se rompió el invariante
-        }
-        return balance == 0;
+        
+        // ESPACIO RESERVADO PARA LA CODIFICACION EN VIVO (BLOQUE 4)
+
     }
 
     // ESTRATEGIA: Backtracking (Búsqueda en Profundidad - DFS)
