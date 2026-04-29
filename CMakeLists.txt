@@ -11,3 +11,6 @@ add_executable(pc2_ejecutable src/main.cpp)
 
 # Ejecutable secundario (Batería de pruebas automatizadas)
 add_executable(run_tests tests/test_solution.cpp)
+
+# Ejecutable terciario (Batería de pruebas de rendimiento)
+add_executable(run_benchmark benchmark/benchmark.cpp)
