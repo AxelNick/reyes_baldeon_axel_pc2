@@ -21,6 +21,13 @@ La solución implementa un algoritmo de búsqueda exhaustiva optimizada. Primero
 - **Tiempo:** $O(2^n)$ en el peor caso teórico, aunque la poda por remoción mínima y la omisión de duplicados reduce drásticamente el espacio de búsqueda efectivo.
 - **Espacio:** $O(n)$ debido a la profundidad de la pila de llamadas (*call stack*) de la recursión y el almacenamiento de la cadena temporal.
 
+## Casos de Prueba Clave
+El proyecto incluye un entorno de pruebas (`tests/test_solution.cpp`) que valida los siguientes escenarios:
+1. **Caso Estándar Mixto `()())()`:** Verifica la eliminación del paréntesis excedente generando múltiples respuestas válidas.
+2. **Caso con Texto Puro `abc`:** Demuestra que el algoritmo ignora caracteres alfanuméricos sin alterar la cadena.
+3. **Caso Extremo (Inversión) `)(`:** Confirma que el programa detecta el invariante roto inmediatamente y devuelve una cadena vacía `[""]`.
+
+
 ### Invariante o idea clave
 El invariante de validación establece que en cualquier prefijo de la cadena, el número de paréntesis de cierre nunca debe exceder al de apertura, y la cadena final resultante debe tener un balance neto de cero. La búsqueda está acotada por el cálculo previo de remociones mínimas, lo que garantiza que solo se exploren soluciones con el menor número de cambios posibles.
 

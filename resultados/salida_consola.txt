@@ -1,0 +1,40 @@
+=== EJECUTANDO BATERIA DE PRUEBAS AUTOMATICAS ===
+
+[TEST] Caso estandar mixto
+Entrada original: "()())()"
+Respuestas validas:
+ -> ()()()
+ -> (())()
+
+[TEST] Caso con caracteres de texto
+Entrada original: "(a)())()"
+Respuestas validas:
+ -> (a)()()
+ -> (a())()
+
+[TEST] Caso Borde: Ya es valida
+Entrada original: "()()"
+Respuestas validas:
+ -> ()()
+
+[TEST] Caso Borde: Inversion total
+Entrada original: ")("
+Respuestas validas:
+ -> [""] (Cadena vacia)
+
+[TEST] Caso Borde: Solo texto puro
+Entrada original: "abc"
+Respuestas validas:
+ -> abc
+
+[TEST] Caso Extremo: Cadena vacia
+Entrada original: ""
+Respuestas validas:
+ -> [""] (Cadena vacia)
+
+[TEST] Caso Extremo: Un solo caracter invalido
+Entrada original: ")"
+Respuestas validas:
+ -> [""] (Cadena vacia)
+
+Todos los tests han finalizado.
