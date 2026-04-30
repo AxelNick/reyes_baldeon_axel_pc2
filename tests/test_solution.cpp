@@ -1,22 +1,24 @@
-#include "../include/Solution301.h"
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
+#include "../include/Solution301.h"
 
 using namespace std;
 
-void runTest(Solution301& solver, string testName, string input) {
-    cout << "\n[TEST] " << testName << endl;
-    cout << "Entrada original: \"" << input << "\"" << endl;
+// Función auxiliar para imprimir los tests con un formato limpio
+void runTest(Solution301& solver, const string& testName, const string& input) {
+    cout << "\n[TEST] " << testName << "\n";
+    cout << "Entrada original: \"" << input << "\"\n";
     
-    vector<string> respuestas = solver.removeInvalidParentheses(input);
+    // Ejecución del algoritmo
+    vector<string> result = solver.removeInvalidParentheses(input);
     
-    cout << "Respuestas validas:" << endl;
-    if (respuestas.empty() || (respuestas.size() == 1 && respuestas[0] == "")) {
-        cout << " -> [\"\"] (Cadena vacia)" << endl;
-    } else {
-        for (const string& resp : respuestas) {
-            cout << " -> " << resp << endl;
+    cout << "Respuestas validas:\n";
+    for (const string& res : result) {
+        if (res.empty()) {
+            cout << " -> [\"\"] (Cadena vacia)\n";
+        } else {
+            cout << " -> " << res << "\n";
         }
     }
 }
@@ -24,29 +26,30 @@ void runTest(Solution301& solver, string testName, string input) {
 int main() {
     Solution301 solver;
     
-    cout << "=== EJECUTANDO BATERIA DE PRUEBAS AUTOMATICAS ===" << endl;
-    
-    // Caso 1: Estándar con múltiples respuestas válidas
+    cout << "=== EJECUTANDO BATERIA DE PRUEBAS AUTOMATICAS ===\n";
+
+    // 1. Caso estándar con múltiples respuestas
     runTest(solver, "Caso estandar mixto", "()())()");
-    
-    // Caso 2: Letras minúsculas intercaladas (Regla oficial de LeetCode)
+
+    // 2. Caso que evalúa que se ignoren las letras (Ruido alfanumérico)
     runTest(solver, "Caso con caracteres de texto", "(a)())()");
-    
-    // Caso 3: Invariante ya cumplido (No debe hacer nada)
+
+    // 3. Caso borde: La cadena no necesita ser modificada
     runTest(solver, "Caso Borde: Ya es valida", "()()");
-    
-    // Caso 4: Inversión estricta (Demuestra que evita ramas imposibles)
+
+    // 4. Caso borde: Inversión estricta que exige fallar rápido
     runTest(solver, "Caso Borde: Inversion total", ")(");
-    
-    // Caso 5: Letras puras (Demuestra que no altera texto base)
+
+    // 5. Caso borde: Texto sin paréntesis
     runTest(solver, "Caso Borde: Solo texto puro", "abc");
 
-    // Caso 6: El caso vacío
+    // 6. Caso extremo exigido: Manejo de memoria sin elementos
     runTest(solver, "Caso Extremo: Cadena vacia", "");
 
-    // Caso 7: Un solo carácter inválido
+    // 7. Caso extremo exigido: Imposibilidad matemática inmediata
     runTest(solver, "Caso Extremo: Un solo caracter invalido", ")");
-    
-    cout << "\nTodos los tests han finalizado." << endl;
+
+    cout << "\nTodos los tests han finalizado.\n";
+
     return 0;
 }
