@@ -1,4 +1,10 @@
-## PC2 - CC232
+# PC2 - CC232: Algoritmos y Estructuras de Datos
+
+### 🎥 Evaluación y Sustentación
+- **Video de Sustentación (28:05 min):** https://drive.google.com/file/d/14jF0L0iR8ksTOB4cGSJjzHLjd4pdzsnn/view?usp=sharing
+- **Material de Apoyo (Diapositivas):** https://canva.link/nmscbu9rml74iq9
+
+---
 
 ### Estudiante
 - **Nombre:** Axel Alberto Reyes Baldeón
@@ -13,6 +19,8 @@
 - **Semana:** Semana 4
 - **Estructura o técnica principal:** Backtracking (Búsqueda en profundidad) y Poda (Pruning).
 
+---
+
 ### Resumen de la solución
 La solución implementa un algoritmo de búsqueda exhaustiva optimizada mediante **Backtracking**. Primero, se realiza un pre-procesamiento para calcular la cantidad mínima de paréntesis de apertura y cierre que deben ser eliminados para balancear la cadena. Durante la exploración, se aplican criterios de **poda** para evitar ramas redundantes (omitiendo duplicados adyacentes) y se garantiza la unicidad de los resultados mediante el uso de un `unordered_set` (Tabla Hash).
 
@@ -23,6 +31,8 @@ La solución implementa un algoritmo de búsqueda exhaustiva optimizada mediante
 ### Invariante o idea clave
 El invariante de validación establece que en cualquier prefijo de la cadena, el número de paréntesis de cierre nunca debe exceder al de apertura, y la cadena final debe tener un balance neto de cero. Se utiliza una **Simulación de Pila (LIFO)** con costo espacial $O(1)$ para verificar este invariante sin instanciar objetos adicionales.
 
+---
+
 ### Archivos relevantes
 - `include/Solution301.h`: Definición de la clase y lógica algorítmica principal.
 - `src/main.cpp`: Interfaz de usuario y modo interactivo por consola.
@@ -31,8 +41,10 @@ El invariante de validación establece que en cualquier prefijo de la cadena, el
 - `demos/demo_pila_visual.cpp`: Herramienta didáctica para visualizar el invariante de balanceo.
 - `docs/`: Documentación técnica vinculada a las actividades de las semanas 1, 2 y 3.
 
+---
+
 ### Compilación y Ejecución
-El proyecto utiliza **CMake** para la gestión de la construcción:
+El proyecto utiliza **CMake** para la gestión de la construcción. Desde la terminal, ejecuta:
 
 ```bash
 cmake -S . -B build
@@ -43,9 +55,12 @@ cmake --build build
 - **Batería de pruebas:** `./build/run_tests.exe`
 - **Modo interactivo:** `./build/pc2_ejecutable.exe`
 - **Análisis de rendimiento:** `./build/run_benchmark.exe`
+- **Demo visual de la pila:** `./build/run_demo.exe`
+
+---
 
 ### Casos de Prueba y Validación
-El sistema valida la correctitud observable mediante 7 escenarios críticos:
+El sistema valida la correctitud observable mediante 7 escenarios críticos automatizados:
 
 1.  **Caso estándar mixto ("()())()"):** Generación de múltiples combinaciones válidas con remoción mínima.
 2.  **Caso con caracteres de texto ("(a)())()"):** Validación de que los caracteres alfanuméricos se mantienen intactos.
@@ -55,8 +70,12 @@ El sistema valida la correctitud observable mediante 7 escenarios críticos:
 6.  **Caso Extremo - Cadena vacía (""):** Manejo seguro de entradas de longitud cero.
 7.  **Caso Extremo - Un solo carácter inválido (")"):** Resolución de balance negativo inmediato.
 
+---
+
 ### Historial de commits
-El desarrollo se realizó de forma progresiva durante 5 días, integrando modularmente la lógica de búsqueda, las optimizaciones de poda, la suite de pruebas y la documentación técnica, garantizando la trazabilidad total del proyecto mediante Git.
+El desarrollo se realizó de forma progresiva durante 5 días, integrando modularmente la lógica de búsqueda, las optimizaciones de poda, la suite de pruebas y la documentación técnica, garantizando la trazabilidad total del proyecto mediante Git. El Día 6 se destinó exclusivamente a la integración de la sustentación audiovisual.
+
+---
 
 ### Declaración de autoría
 Declaro que entiendo el código entregado, que puedo explicarlo, compilarlo, ejecutarlo y modificarlo sin ayuda externa durante la grabación y sustentación.
